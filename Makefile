@@ -49,7 +49,7 @@ qdrant-ingest-from-sql: ## Ingest data from SQL to Qdrant
 
 ingest-rss-articles-flow: ## Ingest RSS articles flow
 	@echo "Running ingest RSS articles flow..."
-	uv run python src/pipelines/flows/rss_ingestion_flow.py
+	uv run python -m src.pipelines.flows.rss_ingestion_flow
 	@echo "Ingest RSS articles flow completed."
 
 ingest-embeddings-flow: ## Ingest embeddings flow
