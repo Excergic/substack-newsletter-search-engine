@@ -28,19 +28,19 @@ supabase-delete: ## Delete Supabase database
 
 qdrant-create-collection: ## Create Qdrant collection
 	@echo "Creating Qdrant collection..."
-	uv run python src/infrastructure/qdrant/create_collection.py
+	uv run python -m src.infrastructure.qdrant.create_collection
 
 qdrant-delete-collection: ## Delete Qdrant collection
 	@echo "Deleting Qdrant collection..."
-	uv run python src/infrastructure/qdrant/delete_collection.py
+	uv run python -m src.infrastructure.qdrant.delete_collection
 
 qdrant-create-index: ## Create Qdrant index
 	@echo "Updating HNSW and creating Qdrant indexes..."
-	uv run python src/infrastructure/qdrant/create_indexes.py
+	uv run python -m src.infrastructure.qdrant.create_indexes
 
 qdrant-ingest-from-sql: ## Ingest data from SQL to Qdrant
 	@echo "Ingesting data from SQL to Qdrant..."
-	uv run python src/infrastructure/qdrant/ingest_from_sql.py
+	uv run python -m src.infrastructure.drant.ingest_from_sql
 	@echo "Data ingestion complete."
 
 #################################################################################
@@ -55,8 +55,8 @@ ingest-rss-articles-flow: ## Ingest RSS articles flow
 ingest-embeddings-flow: ## Ingest embeddings flow
 	@echo "Running ingest embeddings flow..."
 	$(if $(FROM_DATE), \
-		uv run python src/pipelines/flows/embeddings_ingestion_flow.py --from-date $(FROM_DATE), \
-		uv run python src/pipelines/flows/embeddings_ingestion_flow.py)
+		uv run python -m src.pipelines.flows.embeddings_ingestion_flow --from-date $(FROM_DATE), \
+		uv run python -m src.pipelines.flows.embeddings_ingestion_flow)
 	@echo "Ingest embeddings flow completed."
 
 #################################################################################
