@@ -4009,6 +4009,9 @@ wheels = [
 name = "substack-article-search-engine"
 version = "0.1.0"
 source = { virtual = "." }
+dependencies = [
+    { name = "prefect" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -4038,6 +4041,7 @@ dev = [
 ]
 
 [package.metadata]
+requires-dist = [{ name = "prefect", specifier = ">=3.6.13" }]
 
 [package.metadata.requires-dev]
 dev = [

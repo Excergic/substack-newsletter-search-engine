@@ -4,11 +4,12 @@ pull:
     repository: https://github.com/Excergic/substack-newsletter-search-engine
     credentials: "{{ prefect.blocks.github-credentials.my-gh-creds }}"
 
+# This function ensures pip is installed in the environment (Only needed for Prefect Server)
 - prefect.deployments.steps.run_shell_script:
-    id: install-build-tools
+    id: install-pip
+    directory: "{{ clone-step.directory }}"
     script: |
-      apt-get update -y
-      apt-get install -y --no-install-recommends build-essential g++
+      python -m ensurepip --upgrade
 
 - prefect.deployments.steps.pip_install_requirements:
     directory: "{{ clone-step.directory }}"
